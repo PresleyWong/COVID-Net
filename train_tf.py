@@ -26,6 +26,7 @@ parser.add_argument('--out_tensorname', default='dense_3/Softmax:0', type=str, h
 parser.add_argument('--logit_tensorname', default='dense_3/MatMul:0', type=str, help='Name of logit tensor for loss')
 parser.add_argument('--label_tensorname', default='dense_3_target:0', type=str, help='Name of label tensor for loss')
 parser.add_argument('--weights_tensorname', default='dense_3_sample_weights:0', type=str, help='Name of sample weights tensor for loss')
+parser.add_argument('--outputdir', default='./output/', type=str, help='Name train directory')
 
 
 args = parser.parse_args()
@@ -36,7 +37,7 @@ batch_size = args.bs
 display_step = 1
 
 # output path
-outputPath = './output/'
+outputPath = args.outputdir
 runID = args.name + '-lr' + str(learning_rate)
 runPath = outputPath + runID
 pathlib.Path(runPath).mkdir(parents=True, exist_ok=True)

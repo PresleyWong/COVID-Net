@@ -87,7 +87,7 @@ with tf.Session() as sess:
     saver.save(sess, os.path.join(runPath, 'model'))
     print('Saved baseline checkpoint')
     print('Baseline eval:')
-    eval(sess, graph, testfiles, os.path.join(args.datadir,'test'),
+    eval(sess, graph, testfiles, args.datadir,
          args.in_tensorname, args.out_tensorname, args.input_size)
 
     # Training cycle
@@ -109,7 +109,7 @@ with tf.Session() as sess:
                                                 labels_tensor: batch_y,
                                                 sample_weights: weights})
             print("Epoch:", '%04d' % (epoch + 1), "Minibatch loss=", "{:.9f}".format(loss))
-            eval(sess, graph, testfiles, os.path.join(args.datadir,'test'),
+            eval(sess, graph, testfiles, args.datadir,
                  args.in_tensorname, args.out_tensorname, args.input_size)
             saver.save(sess, os.path.join(runPath, 'model'), global_step=epoch+1, write_meta_graph=False)
             print('Saving checkpoint at epoch {}'.format(epoch + 1))

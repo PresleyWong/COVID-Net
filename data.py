@@ -106,7 +106,7 @@ _augmentation_transform = ImageDataGenerator(
 )
 
 def apply_augmentation(img):
-    img = random_ratio_resize(img)
+    # img = random_ratio_resize(img)
     img = _augmentation_transform.random_transform(img)
     return img
 

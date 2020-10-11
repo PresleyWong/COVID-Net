@@ -211,12 +211,7 @@ class BalanceCovidDataset(keras.utils.Sequence):
         for i in range(len(batch_files)):
             sample = batch_files[i].split()
 
-            if self.is_training:
-                folder = 'train'
-            else:
-                folder = 'test'
-
-            x = process_image_file(os.path.join(self.datadir, folder, sample[1]),
+            x = process_image_file(os.path.join(self.datadir, sample[1]),
                                    self.top_percent,
                                    self.input_shape[0])
 
